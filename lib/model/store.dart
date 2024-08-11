@@ -11,13 +11,13 @@ class Store {
   // review_list: json(List<UUID>)
   // food_list: json(List<UUID>)
 
-  final Uuid uuid;
+  final String uuid;
   final String name;
   final double latitude;
   final double longitude;
   final int likes;
-  final List<Uuid> reviewList;
-  final List<Uuid> foodList;
+  final List<String> reviewList;
+  final List<String> foodList;
 
 
   const Store({
@@ -44,13 +44,13 @@ class Store {
 
   factory Store.fromJson(Map<String, dynamic> json) {
     return Store(
-      uuid: Uuid.parse(json['uuid']) as Uuid,
+      uuid: json['uuid'],
       name: json['name'],
       latitude: json['latitude'],
       longitude: json['longitude'],
       likes: json['likes'],
-      reviewList: json['reviewList'].map((review) => Uuid.parse(review)).toList(),
-      foodList: json['foodList'].map((food) => Uuid.parse(food)).toList(),
+      reviewList: json['reviewList'].toList(),
+      foodList: json['foodList'].toList(),
     );
   }
 }

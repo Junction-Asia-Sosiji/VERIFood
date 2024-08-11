@@ -15,8 +15,8 @@ class FoodHelper {
     return response.map((e) => Food.fromJson(e)).toList();
   }
 
-  Future<Food?> loadFood(Uuid uuid) async {
-    final response = await _supabase.from('foods').select().eq('uuid', uuid.toString());
+  Future<Food?> loadFood(String uuid) async {
+    final response = await _supabase.from('foods').select().eq('uuid', uuid);
     return response.map((e) => Food.fromJson(e)).firstOrNull;
   }
 

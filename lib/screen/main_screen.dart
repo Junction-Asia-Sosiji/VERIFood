@@ -21,15 +21,47 @@ class _MainScreenState extends State<MainScreen> {
   late NaverMapController _mapController;
   final Completer<NaverMapController> _mapControllerCompleter = Completer();
   bool _isRecommended = true;
-  List<Store> _stores = [];
-  List<double> _avgRatings = [];
+  List<Store> _stores = [
+    Store(
+      uuid: "1",
+      name: "Restaurant 1",
+      latitude: 35.8355006,
+      longitude: 129.20920409,
+      likes: 0,
+      reviewList: [],
+      foodList: [],
+    ),
+    Store(
+      uuid: "2",
+      name: "Restaurant 2",
+      latitude: 35.835506,
+      longitude: 129.2092042,
+      likes: 0,
+      reviewList: [],
+      foodList: [],
+    ),
+    Store(
+      uuid: "3",
+      name: "Restaurant 3",
+      latitude: 35.835504,
+      longitude: 129.2092042,
+      likes: 0,
+      reviewList: [],
+      foodList: [],
+    ),
+  ];
+  List<double> _avgRatings = [
+    4.5,
+    4.0,
+    3.5,
+  ];
 
 
   @override
   void initState() {
     super.initState();
 
-    _loadItems();
+    // _loadItems();
   }
 
   @override
@@ -456,11 +488,12 @@ class _MainScreenState extends State<MainScreen> {
     List<Store> stores = [];
     List<double> avgRatings = [];
     for (var storeUuid in zone.stores) {
+      var storeUuidString = storeUuid as String;
       if (i >= 5) break;
-      var store = await StoreHelper().loadStore(storeUuid);
+      var store = await StoreHelper().loadStore(storeUuidString);
       if (store != null) {
         stores.add(store);
-        double avg = await ReviewHelper().loadAverageRating(storeUuid);
+        double avg = await ReviewHelper().loadAverageRating(storeUuidString);
         avgRatings.add(avg);
       }
       i++;

@@ -10,7 +10,7 @@ import 'package:veri_food/model/review.dart';
 import 'package:veri_food/model/store.dart';
 
 class StoreScreen extends StatefulWidget {
-  final Uuid? store;
+  final String? store;
 
   const StoreScreen({super.key, this.store});
 
@@ -20,10 +20,36 @@ class StoreScreen extends StatefulWidget {
 
 class _StoreScreenState extends State<StoreScreen> {
   int _selectedMenu = 0;
-  Store? _selectedStore;
-  double? _avgRating;
-  List<Food> _foodList = [];
-  List<Review> _reviewList = [];
+  Store? _selectedStore = Store(
+    uuid: "1",
+    name: "Restaurant 1",
+    latitude: 35.8355006,
+    longitude: 129.20920409,
+    likes: 0,
+    reviewList: [],
+    foodList: [],
+  );
+  double? _avgRating = 4.5;
+  List<Food> _foodList = [
+    Food(
+      uuid: "1",
+      name: "Food 1",
+      price: 10000,
+    ),
+    Food(
+      uuid: "2",
+      name: "Food 2",
+      price: 20000,
+    ),
+    Food(
+      uuid: "3",
+      name: "Food 3",
+      price: 30000,
+    ),
+  ];
+  List<Review> _reviewList = [
+
+  ];
 
   @override
   void initState() {

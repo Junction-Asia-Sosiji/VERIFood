@@ -14,8 +14,8 @@ class StoreHelper {
     return response.map((e) => Store.fromJson(e)).toList();
   }
 
-  Future<Store?> loadStore(Uuid uuid) async {
-    final response = await _supabase.from('stores').select().eq('uuid', uuid.toString());
+  Future<Store?> loadStore(String uuid) async {
+    final response = await _supabase.from('stores').select().eq('uuid', uuid);
     return response.map((e) => Store.fromJson(e)).firstOrNull;
   }
 

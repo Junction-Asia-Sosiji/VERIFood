@@ -15,8 +15,8 @@ class ReviewHelper {
     return response.map((e) => Review.fromJson(e)).toList();
   }
 
-  Future<Review?> loadReview(Uuid uuid) async {
-    final response = await _supabase.from('reviews').select().eq('uuid', uuid.toString());
+  Future<Review?> loadReview(String uuid) async {
+    final response = await _supabase.from('reviews').select().eq('uuid', uuid);
     return response.map((e) => Review.fromJson(e)).firstOrNull;
   }
 
@@ -24,7 +24,7 @@ class ReviewHelper {
     await _supabase.from('reviews').upsert(review.toJson());
   }
 
-  Future<double> loadAverageRating(Uuid storeUuid) async {
+  Future<double> loadAverageRating(String storeUuid) async {
     var reviewUuids = await StoreHelper().loadStore(storeUuid).then((store) => store?.reviewList);
     if (reviewUuids == null) {
       return 0;

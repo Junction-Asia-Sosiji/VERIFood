@@ -1,9 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:uuid/uuid.dart';
 
 class Zone {
-  final Uuid uuid;
+  final String uuid;
   final String name;
-  final Set<Uuid> stores;
+  final Set<dynamic> stores;
 
   const Zone({required this.uuid, required this.name, required this.stores});
 
@@ -11,15 +13,15 @@ class Zone {
     return {
       'uuid': uuid.toString(),
       'name': name,
-      'stores': stores.map((store) => store.toString()).toList(),
+      'store_list': stores.toList(),
     };
   }
 
   factory Zone.fromJson(Map<String, dynamic> json) {
     return Zone(
-      uuid: Uuid.parse(json['uuid']) as Uuid,
+      uuid: json['uuid'],
       name: json['name'],
-      stores: json['stores'].map((store) => Uuid.parse(store)).toSet(),
+      stores: json['store_list'].values.map((e) => e as String).toSet(),
     );
   }
 }

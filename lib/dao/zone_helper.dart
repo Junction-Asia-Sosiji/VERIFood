@@ -14,8 +14,8 @@ class ZoneHelper {
     return response.map((e) => Zone.fromJson(e)).toList();
   }
 
-  Future<Zone?> loadZone(Uuid uuid) async {
-    final response = await _supabase.from('zones').select().eq('uuid', uuid.toString());
+  Future<Zone?> loadZone(String uuid) async {
+    final response = await _supabase.from('zones').select().eq('uuid', uuid);
     return response.map((e) => Zone.fromJson(e)).firstOrNull;
   }
 

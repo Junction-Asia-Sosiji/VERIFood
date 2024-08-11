@@ -11,12 +11,12 @@ class Review {
   // comment: Text
   // picture_url: Text
 
-  final Uuid uuid;
+  final String uuid;
   final int rating;
   final String authorName;
   final int authorWeek;
   final int createdAt;
-  final Uuid food;
+  final String food;
   final int checklist;
   final String comment;
   final String pictureUrl;
@@ -49,12 +49,12 @@ class Review {
 
   factory Review.fromJson(Map<String, dynamic> json) {
     return Review(
-      uuid: Uuid.parse(json['uuid']) as Uuid,
+      uuid: json['uuid'],
       rating: json['rating'],
       authorName: json['authorName'],
       authorWeek: json['authorWeek'],
       createdAt: json['createdAt'],
-      food: Uuid.parse(json['food']) as Uuid,
+      food: json['food'],
       checklist: json['checklist'],
       comment: json['comment'],
       pictureUrl: json['pictureUrl'],

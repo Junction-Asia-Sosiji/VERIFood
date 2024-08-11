@@ -8,7 +8,7 @@ import 'package:veri_food/dao/store_helper.dart';
 import 'package:veri_food/model/review.dart';
 
 class ReviewScreen extends StatefulWidget {
-  final Uuid? store;
+  final String? store;
 
   const ReviewScreen({super.key, this.store});
 
@@ -1011,7 +1011,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                     ElevatedButton(
                       onPressed: () async {
                         await _saveReview(Review(
-                          uuid: Uuid(),
+                          uuid: Uuid().v4(),
                           rating: _stars,
                           authorName: _nameController.text,
                           authorWeek: int.parse(_weeksController.text),

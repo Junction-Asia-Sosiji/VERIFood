@@ -6,7 +6,7 @@ class Food {
   // price: nullable Integer
   // picture_url: nullable Text
 
-  final Uuid uuid;
+  final String uuid;
   final String name;
   final int? price;
   final String? pictureUrl;
@@ -29,7 +29,7 @@ class Food {
 
   factory Food.fromJson(Map<String, dynamic> json) {
     return Food(
-      uuid: Uuid.parse(json['uuid']) as Uuid,
+      uuid: json['uuid'],
       name: json['name'],
       price: json['price'],
       pictureUrl: json['pictureUrl'],

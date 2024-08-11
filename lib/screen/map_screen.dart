@@ -10,7 +10,7 @@ import 'package:veri_food/dao/store_helper.dart';
 import 'package:veri_food/model/store.dart';
 
 class MapScreen extends StatefulWidget {
-  final Uuid? store;
+  final String? store;
 
   const MapScreen({super.key, this.store});
 
@@ -21,8 +21,44 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   late NaverMapController _mapController;
   final Completer<NaverMapController> _mapControllerCompleter = Completer();
-  Store? _selectedStore;
-  List<Store> _stores = [];
+  Store? _selectedStore = Store(
+    uuid: "1",
+    name: "Restaurant 1",
+    latitude: 35.8355006,
+    longitude: 129.20920409,
+    likes: 0,
+    reviewList: [],
+    foodList: [],
+  );
+  List<Store> _stores = [
+    Store(
+      uuid: "1",
+      name: "Restaurant 1",
+      latitude: 35.8355006,
+      longitude: 129.20920409,
+      likes: 0,
+      reviewList: [],
+      foodList: [],
+    ),
+    Store(
+      uuid: "2",
+      name: "Restaurant 2",
+      latitude: 35.835506,
+      longitude: 129.2092042,
+      likes: 0,
+      reviewList: [],
+      foodList: [],
+    ),
+    Store(
+      uuid: "3",
+      name: "Restaurant 3",
+      latitude: 35.835504,
+      longitude: 129.2092042,
+      likes: 0,
+      reviewList: [],
+      foodList: [],
+    ),
+  ];
 
   @override
   void initState() {
