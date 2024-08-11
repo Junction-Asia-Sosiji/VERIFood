@@ -13,8 +13,8 @@ class Store {
 
   final Uuid uuid;
   final String name;
-  final int mapX;
-  final int mapY;
+  final double latitude;
+  final double longitude;
   final int likes;
   final List<Uuid> reviewList;
   final List<Uuid> foodList;
@@ -23,8 +23,8 @@ class Store {
   const Store({
     required this.uuid,
     required this.name,
-    required this.mapX,
-    required this.mapY,
+    required this.latitude,
+    required this.longitude,
     required this.likes,
     required this.reviewList,
     required this.foodList,
@@ -34,8 +34,8 @@ class Store {
     return {
       'uuid': uuid.toString(),
       'name': name,
-      'mapX': mapX,
-      'mapY': mapY,
+      'latitude': latitude,
+      'longitude': longitude,
       'likes': likes,
       'reviewList': reviewList.map((review) => review.toString()).toList(),
       'foodList': foodList.map((food) => food.toString()).toList(),
@@ -46,8 +46,8 @@ class Store {
     return Store(
       uuid: Uuid.parse(json['uuid']) as Uuid,
       name: json['name'],
-      mapX: json['mapX'],
-      mapY: json['mapY'],
+      latitude: json['latitude'],
+      longitude: json['longitude'],
       likes: json['likes'],
       reviewList: json['reviewList'].map((review) => Uuid.parse(review)).toList(),
       foodList: json['foodList'].map((food) => Uuid.parse(food)).toList(),
